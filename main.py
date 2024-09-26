@@ -1,15 +1,12 @@
 from kivy.app import App
 from kivy.config import Config
 from kivy.core.window import Window
-from kivy.lang.builder import Builder
 from kivy.properties import ListProperty
 from kivymd.uix.behaviors.hover_behavior import HoverBehavior
 
 from kivy.uix.screenmanager import Screen, ScreenManager
 
 from kivy.uix.button import Button
-
-Builder.load_file('styles.kv')
 
 Config.set('kivy', 'window_icon', 'C:\Projects\PyCharm\MemoBox\img\icon.png')
 Window.size = (1024, 768)
