@@ -1,9 +1,15 @@
 from kivy.app import App
 from kivy.config import Config
 from kivy.core.window import Window
+from kivy.lang.builder import Builder
+from kivy.properties import ListProperty
+from kivymd.uix.behaviors.hover_behavior import HoverBehavior
 
 from kivy.uix.screenmanager import Screen, ScreenManager
 
+from kivy.uix.button import Button
+
+Builder.load_file('styles.kv')
 
 Config.set('kivy', 'window_icon', 'C:\Projects\PyCharm\MemoBox\img\icon.png')
 Window.size = (1024, 768)
@@ -12,18 +18,59 @@ Window.left = 450
 
 
 
+class StyledButton(Button, HoverBehavior):
+    background = ListProperty((1, 1, 1, 0))
+
+    def on_enter(self):
+        self.background = (255, 255, 255, 0.1)
+
+    def on_leave(self):
+        self.background = (255, 255, 255, 0)
+
+
+
 class StartMenu(Screen):
     pass
 
 
+class ProfileMenu(Screen):
+    pass
 
-class MemoBoxApp(App):
+
+
+class WatchMenu(Screen):
+    pass
+
+
+
+class TaskMenu(Screen):
+    pass
+
+
+
+class SavedMenu(Screen):
+    pass
+
+
+
+class MemoBoxApp(App, Screen):
     def build(self):
-        sm = ScreenManager()
+        self.sm = ScreenManager()
 
-        sm.add_widget(StartMenu(name='start_menu'))
+        self.sm.add_widget(StartMenu(name='start_menu'))
+        self.sm.add_widget(ProfileMenu(name='profile_menu'))
+        self.sm.add_widget(WatchMenu(name='watch_menu'))
+        self.sm.add_widget(TaskMenu(name='task_menu'))
+        self.sm.add_widget(SavedMenu(name='saved_menu'))
 
-        return sm
+        return self.sm
+
+    def toggle_menu(self):
+        menu = self.sm.get_screen('start_menu').ids.sidebar
+        if menu.opacity == 0:
+            menu.opacity = 1
+        else:
+            menu.opacity = 0
 
 
 
