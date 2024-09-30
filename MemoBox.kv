@@ -24,7 +24,7 @@
         background_normal: 'C:\\Projects\\PyCharm\\MemoBox\\img\\dropdown-button.png'
         size_hint: None, None
         size: 75, 75
-        pos_hint: {'center_x': 0.12, 'center_y': 0.94}
+        pos_hint: {'center_x': 0.04, 'center_y': 0.946}
         canvas.before:
             Color:
                 rgba: self.background
@@ -32,8 +32,8 @@
                 size: self.size
                 pos: self.pos
                 radius: [10]
-        on_press: app.toggle_menu()
-
+        on_press: app.toggle_menu('start_menu')
+    # START sidebar
     BoxLayout:
         id: sidebar
         orientation: 'vertical'
@@ -97,3 +97,106 @@
                     pos: self.pos
                     radius: [10]
             on_press: root.manager.current = 'saved_menu'
+    # END sidebar
+
+
+<TaskMenu>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.15
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    StyledButton:
+        background_normal: 'C:\\Projects\\PyCharm\\MemoBox\\img\\dropdown-button.png'
+        size_hint: None, None
+        size: 75, 75
+        pos_hint: {'center_x': 0.04, 'center_y': 0.946}
+        canvas.before:
+            Color:
+                rgba: self.background
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [10]
+        on_press: app.toggle_menu('task_menu')
+    # START sidebar
+    BoxLayout:
+        id: sidebar
+        orientation: 'vertical'
+        size_hint: None, None
+        pos_hint: {'center_x': 0.125, 'center_y': 0.445}
+        height: 680
+        width: 250
+        opacity: 0
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 0.03
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [10]
+
+        StyledButton:
+            text: 'Profile'
+            background_color: 1, 1, 1, 0
+            canvas.before:
+                Color:
+                    rgba: self.background
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [10]
+            on_press: root.manager.current = 'profile_menu'
+
+        StyledButton:
+            text: 'Watch Menu'
+            background_color: 1, 1, 1, 0
+            canvas.before:
+                Color:
+                    rgba: self.background
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [10]
+            on_press: root.manager.current = 'watch_menu'
+
+        StyledButton:
+            text: 'Task Menu'
+            background_color: 1, 1, 1, 0
+            canvas.before:
+                Color:
+                    rgba: self.background
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [10]
+            on_press: root.manager.current = 'task_menu'
+
+        StyledButton:
+            text: 'Saved Menu'
+            background_color: 1, 1, 1, 0
+            canvas.before:
+                Color:
+                    rgba: self.background
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [10]
+            on_press: root.manager.current = 'saved_menu'
+    # END sidebar
+
+    StyledButton:
+        background_normal: 'C:\\Projects\\PyCharm\\MemoBox\\img\\plus.png'
+        size_hint: None, None
+        size: 75, 75
+        pos_hint: {'center_x': 0.962, 'center_y': 0.05}
+        canvas.before:
+            Color:
+                rgba: self.background
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [100]
+        on_press: root.add_task_popup()
