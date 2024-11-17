@@ -13,7 +13,7 @@ from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
 from kivy.uix.dropdown import DropDown
 
-Config.set('kivy', 'window_icon', 'C:\Projects\PyCharm\MemoBox\img\icon.png')
+Config.set('kivy', 'window_icon', r'C:\Projects\PyCharm\MemoBox\img\icon.png')
 Window.size = (1024, 768)
 Window.top = 150
 Window.left = 450
